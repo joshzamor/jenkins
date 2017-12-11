@@ -1,0 +1,20 @@
+version: '2'
+services:
+    nginx-proxy:
+        image: jwilder/nginx-proxy
+        ports:
+            - "80:80"
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+    jenkins:
+        image: jenkins/jenkins:2.89.1-alpine
+        environment:
+            - VIRTUAL_HOST=jenkins.joshzamor.com
+            - VIRTUAL_PORT=8080
+        volumes:
+            - jenkins_home:/var/jenkins_home
+        ports:
+            - "50000:50000"
+volumes:
+    jenkins_home:
+        external: false
