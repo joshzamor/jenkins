@@ -1,0 +1,15 @@
+pipeline {
+  agent {
+    label 'nyumbani'
+  }
+  triggers {
+    cron('H H(0-3) H/3 * *')
+  }
+  stages {
+    stage('copy') {
+      steps {
+        sh '/home/pi/bin/rclone sync -v ~/nfs-imesharibika/Photography/ remote:jz-photography/Photography'
+      }
+    }
+  }
+}
