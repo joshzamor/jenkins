@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('copy') {
       steps {
-        sh '/home/pi/bin/rclone sync -v ~/nfs-imesharibika/Photography/ remote:jz-photography/Photography'
+        sh '/home/pi/bin/rclone sync -v ~/nfs-imeshaharibika/Photography/ remote:jz-photography/Photography'
       }
     }
   }
